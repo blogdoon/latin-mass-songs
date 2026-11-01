@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; object-src 'none'; media-src 'self' blob:; base-uri 'self'"
+    />
+    <meta name="theme-color" content="#0f4c5c" />
+    <title>Missa Latina</title>
+    <link rel="manifest" href="manifest.json" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <button id="back" class="icon-btn" type="button" aria-label="Back" hidden>
+        ←
+      </button>
+      <h1 id="page-title">Missa Latina</h1>
+      <span id="goal" class="goal" role="status"></span>
+    </header>
+
+    <p id="voice-warning" class="warning" hidden>
+      No Italian voice found (Church Latin is read with an Italian voice). On
+      Android: Settings → Accessibility → Text-to-speech → Google → install
+      Italian.
+    </p>
+
+    <main>
+      <section id="home" aria-live="polite"></section>
+
+      <section id="lesson" hidden>
+        <div
+          id="modes"
+          class="modes"
+          role="group"
+          aria-label="Practice mode"
+        ></div>
+        <div
+          id="roles"
+          class="roles"
+          role="group"
+          aria-label="Your role"
+          hidden
+        ></div>
+        <p id="mode-hint" class="hint"></p>
+        <button
+          id="fade"
+          class="fade-btn"
+          type="button"
+          aria-label="How much Latin text to show. Each finished play-through hides more."
+        ></button>
+        <ol id="lines" class="lines"></ol>
+      </section>
+    </main>
+
+    <footer id="player" class="player" hidden>
+      <div class="settings">
+        <label
+          >Speed
+          <input id="rate" type="range" min="0.6" max="1.2" step="0.05" />
+          <output id="rate-out"></output
+        ></label>
+        <label
+          >Your time
+          <input id="pause" type="range" min="1" max="3" step="0.25" />
+          <output id="pause-out"></output
+        ></label>
+        <label id="voice-label" hidden
+          >Voice
+          <select id="voice"></select
+        ></label>
+        <label class="check"
+          ><input id="show-text" type="checkbox" /> Show hidden text</label
+        >
+      </div>
+      <div class="transport">
+        <button
+          id="prev"
+          class="icon-btn"
+          type="button"
+          aria-label="Previous line"
+        >
+          ⏮
+        </button>
+        <button id="play" class="play-btn" type="button" aria-label="Play">
+          ▶
+        </button>
+        <button id="next" class="icon-btn" type="button" aria-label="Next line">
+          ⏭
+        </button>
+      </div>
+    </footer>
+
+    <script src="library.js"></script>
+    <script src="practice.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
